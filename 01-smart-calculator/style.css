@@ -1,0 +1,387 @@
+/* ================================
+   RESET
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(circle at 15% 20%, #4f46e5 0%, transparent 30%),
+        radial-gradient(circle at 85% 80%, #db2777 0%, transparent 30%),
+        linear-gradient(135deg, #020617, #1e1b4b);
+
+    color: white;
+}
+
+
+/* ================================
+   CALCULATOR
+================================ */
+
+.calculator {
+    width: min(100%, 360px);
+
+    padding: 24px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(99, 102, 241, 0.2);
+
+    animation: appear 0.6s ease;
+}
+
+
+/* ================================
+   TITLE
+================================ */
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+
+    background: linear-gradient(
+        90deg,
+        #a78bfa,
+        #60a5fa,
+        #f472b6
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================================
+   DISPLAY
+================================ */
+
+#display {
+    width: 100%;
+    height: 70px;
+
+    margin-bottom: 18px;
+    padding: 12px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.4);
+
+    color: white;
+
+    font-size: 27px;
+    font-weight: bold;
+
+    text-align: right;
+
+    box-shadow:
+        inset 0 2px 10px rgba(0, 0, 0, 0.3);
+
+    transition: 0.3s;
+}
+
+#display:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 15px rgba(129, 140, 248, 0.4);
+}
+
+
+/* ================================
+   BUTTON GRID
+================================ */
+
+.buttons {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+button {
+    height: 58px;
+
+    border: none;
+    border-radius: 13px;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    color: #1e293b;
+
+    background: linear-gradient(
+        145deg,
+        #f8fafc,
+        #cbd5e1
+    );
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s,
+        filter 0.2s;
+}
+
+
+/* Hover */
+
+button:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Click */
+
+button:active {
+    transform: scale(0.92);
+}
+
+
+/* ================================
+   SPECIAL BUTTONS
+================================ */
+
+/* Clear */
+
+button:nth-child(1) {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+
+/* Delete */
+
+button:nth-child(2) {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+}
+
+
+/* Percentage */
+
+button:nth-child(3) {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+}
+
+
+/* Operators */
+
+button:nth-child(4),
+button:nth-child(8),
+button:nth-child(12),
+button:nth-child(16) {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+
+    font-size: 23px;
+}
+
+
+/* Decimal */
+
+button:nth-child(18) {
+    background: linear-gradient(135deg, #64748b, #475569);
+    color: white;
+}
+
+
+/* Equals */
+
+button:nth-child(19) {
+    grid-column: span 2;
+
+    background: linear-gradient(135deg, #ec4899, #db2777);
+
+    color: white;
+
+    font-size: 25px;
+}
+
+
+/* ================================
+   GLOW ON HOVER
+================================ */
+
+button:nth-child(1):hover {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+button:nth-child(2):hover {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+}
+
+button:nth-child(3):hover {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+}
+
+button:nth-child(4):hover,
+button:nth-child(8):hover,
+button:nth-child(12):hover,
+button:nth-child(16):hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+button:nth-child(19):hover {
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.7);
+}
+
+
+/* ================================
+   ENTRY ANIMATION
+================================ */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .calculator {
+        width: min(100%, 350px);
+        padding: 20px;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 400px) {
+
+    .calculator {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 23px;
+        margin-bottom: 15px;
+    }
+
+    #display {
+        height: 60px;
+        font-size: 23px;
+        margin-bottom: 14px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    button {
+        height: 52px;
+        font-size: 17px;
+        border-radius: 11px;
+    }
+
+    button:nth-child(4),
+    button:nth-child(8),
+    button:nth-child(12),
+    button:nth-child(16) {
+        font-size: 21px;
+    }
+
+    button:nth-child(19) {
+        font-size: 22px;
+    }
+}
+
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-width: 320px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .calculator {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #display {
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .buttons {
+        gap: 6px;
+    }
+
+    button {
+        height: 48px;
+        font-size: 16px;
+    }
+}
